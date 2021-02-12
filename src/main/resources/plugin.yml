@@ -1,0 +1,14 @@
+name: TControls
+version: ${project.version}
+main: me.delected.tcontrols.TControls
+api-version: 1.16
+depend: [ Train_Carts ]
+authors: [ Delected_ ]
+description: A control panel for your TrainCarts train right from your inventory!
+website: https://delected.me/
+
+commands:
+  tcontrols:
+    description: toggles the thing
+    usage: /<command>
+    aliases: ['tcon', 'tcons']
