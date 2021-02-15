@@ -12,6 +12,9 @@ import org.bukkit.util.io.BukkitObjectOutputStream;
 import org.yaml.snakeyaml.external.biz.base64Coder.Base64Coder;
 
 import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Base64;
 
 public class DriverYaml {
@@ -109,9 +112,13 @@ public class DriverYaml {
         }
     }
     public static boolean isInDriverMode(Player p) {
-        if (new File(Bukkit.getServer().getPluginManager().getPlugin("TControls").getDataFolder() + "/" + p.getUniqueId().toString() + ".txt").isFile()) {
+        if (new File(Bukkit.getServer().getPluginManager().getPlugin("TControls").getDataFolder(), p.getUniqueId().toString() + ".txt").isFile()) {
             return true;
         }
         return false;
+    }
+    static String readFile(File f, Charset encoding) throws IOException {
+        byte[] encoded = Files.readAllBytes(Paths.get(f.getPath()));
+        return new String(encoded, encoding);
     }
 }
