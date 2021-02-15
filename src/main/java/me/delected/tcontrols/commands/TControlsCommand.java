@@ -1,6 +1,8 @@
-package me.delected.tcontrols;
+package me.delected.tcontrols.commands;
 
 import com.bergerkiller.bukkit.tc.controller.MinecartMemberStore;
+import me.delected.tcontrols.DriverFile;
+import me.delected.tcontrols.ServerOptions;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
@@ -13,7 +15,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -38,13 +39,13 @@ public class TControlsCommand implements CommandExecutor {
             return true;
         }
 
-        if (DriverYaml.isInDriverMode(p)) {
+        if (DriverFile.isInDriverMode(p)) {
             File f = new File(Bukkit.getServer().getPluginManager().getPlugin("TControls").getDataFolder(), p.getUniqueId().toString() + ".txt");
 
             try {
 
                 p.getInventory().clear();
-                p.getInventory().setContents(DriverYaml.getSavedPlayerInventory(DriverYaml.readFile(f, StandardCharsets.US_ASCII)));
+                p.getInventory().setContents(DriverFile.getSavedPlayerInventory(DriverFile.readFile(f, StandardCharsets.US_ASCII)));
                 p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(""));
                 if (f.delete()) {
                     p.sendMessage(ChatColor.GREEN + "Removed you from the driver mode! Here are your items back!");
@@ -79,11 +80,10 @@ public class TControlsCommand implements CommandExecutor {
 
         // success
         try {
-            DriverYaml.savePlayerInventory(p);
+            DriverFile.savePlayerInventory(p);
             displayContents(p);
             if (so.getActionBarEnabled()) {
                 displayActionBar(p);
-                p.sendMessage("debug line 85 tcontrolscmd");
             }
             return true;
 

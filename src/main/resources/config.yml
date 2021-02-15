@@ -1,5 +1,8 @@
-// the speed to set the train at if the neutral button is clicked.
-neutral_speed: 4.0
+# the speed to set the train at if the neutral button is clicked.
+neutral-speed: 0.4
 
-// action bar is the text right above your inventory that displays the current speed of the train
-action_bar_enabled: true
+# action bar is the text right above your inventory that displays the current speed of the train
+action-bar-enabled: true
+
+# the max speed a train is allowed to go at
+max-speed: 3.0

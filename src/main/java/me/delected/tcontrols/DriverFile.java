@@ -15,39 +15,9 @@ import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Base64;
 
-public class DriverYaml {
-    // custom yaml that stores players if they are in driver mode
-    private static File file;
-    private static FileConfiguration customFile;
+public class DriverFile {
 
-
-    public static void setup() throws IOException {
-        file = new File(Bukkit.getServer().getPluginManager().getPlugin("TControls").getDataFolder(), "drivers.yml");
-
-        if (!file.exists()) {
-            file.createNewFile();
-        }
-        customFile = YamlConfiguration.loadConfiguration(file);
-
-    }
-
-    public static FileConfiguration get() {
-        return customFile;
-    }
-
-    public static void save() {
-        try {
-            customFile.save(file);
-        } catch (IOException e) {
-            System.out.println("[TControls] Couldn't save drivers.yml!");
-        }
-    }
-
-    public static void reload() {
-        customFile = YamlConfiguration.loadConfiguration(file);
-    }
 
     public static void savePlayerInventory(Player p) throws FileNotFoundException {
 
@@ -117,7 +87,7 @@ public class DriverYaml {
         }
         return false;
     }
-    static String readFile(File f, Charset encoding) throws IOException {
+    public static String readFile(File f, Charset encoding) throws IOException {
         byte[] encoded = Files.readAllBytes(Paths.get(f.getPath()));
         return new String(encoded, encoding);
     }

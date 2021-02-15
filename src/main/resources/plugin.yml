@@ -9,6 +9,10 @@ website: https://delected.me/
 
 commands:
   tcontrols:
-    description: toggles the thing
+    description: toggles the driver mode
     usage: /<command>
     aliases: ['tcon', 'tcons']
+  tcontrolsreload:
+    description: reloads the config.yml file
+    usage: /<command>
+    aliases: ['tconreload', 'tcr', 'tcontrolreload']

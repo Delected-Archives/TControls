@@ -14,5 +14,4 @@ public class LeaveEvent implements Listener {
         Player p = e.getPlayer();
         p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(""));
     }
-
 }
