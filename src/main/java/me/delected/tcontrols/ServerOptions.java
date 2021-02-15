@@ -1,21 +1,26 @@
 package me.delected.tcontrols;
 
-import org.bukkit.Bukkit;
-import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.configuration.Configuration;
 
 public class ServerOptions {
-    JavaPlugin plugin = TControls.plugin;
-
+    Configuration config = TControls.plugin.getConfig();
     public double getNeutralSpeed() {
         try {
-            return plugin.getConfig().getDouble("neutral_speed");
+            return config.getDouble("neutral-speed");
         } catch (Exception e) {
-            System.out.println("There is an error in your config's 'neutral_speed' value, so we've set it to 4.0 for you.");
-            return 4.0;
+            System.out.println("There is an error in your config's 'neutral-speed' value, so we've set it to 0.4 for you.");
+            return 0.4;
         }
     }
     public boolean getActionBarEnabled() {
-        return plugin.getConfig().getBoolean("action_bar_enabled", true);
+        return config.getBoolean("action-bar-enabled", true);
     }
-
+    public double getMaxSpeed() {
+        try {
+            return config.getDouble("max-speed");
+        } catch (Exception e) {
+            System.out.println("There is an error in your config's 'max-speed' value, so we've set it to 3.0 for you.");
+            return 3.0;
+        }
+    }
 }
