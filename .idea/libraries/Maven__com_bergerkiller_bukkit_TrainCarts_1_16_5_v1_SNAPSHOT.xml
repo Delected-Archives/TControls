@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.bergerkiller.bukkit:TrainCarts:1.16.5-v1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/bergerkiller/bukkit/TrainCarts/1.16.5-v1-SNAPSHOT/TrainCarts-1.16.5-v1-20210131.004258-842.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/bergerkiller/bukkit/TrainCarts/1.16.5-v1-SNAPSHOT/TrainCarts-1.16.5-v1-20210131.004258-842-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/bergerkiller/bukkit/TrainCarts/1.16.5-v1-SNAPSHOT/TrainCarts-1.16.5-v1-20210131.004258-842-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

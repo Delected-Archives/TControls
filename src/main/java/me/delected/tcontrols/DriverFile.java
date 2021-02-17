@@ -15,9 +15,11 @@ import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 public class DriverFile {
 
+    public static ArrayList<Player> taskList = new ArrayList<Player>();
 
     public static void savePlayerInventory(Player p) throws FileNotFoundException {
 

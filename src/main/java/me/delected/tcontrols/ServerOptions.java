@@ -23,4 +23,12 @@ public class ServerOptions {
             return 3.0;
         }
     }
+    public double getBlockDistance() {
+        try {
+            return config.getDouble("block-distance");
+        } catch (Exception e) {
+            System.out.println("There is an error in your config's 'block-distance' value, so we've set it to 2.5 for you.");
+            return 15;
+        }
+    }
 }

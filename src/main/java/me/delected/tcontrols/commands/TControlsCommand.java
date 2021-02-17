@@ -1,8 +1,10 @@
 package me.delected.tcontrols.commands;
 
 import com.bergerkiller.bukkit.tc.controller.MinecartMemberStore;
+import me.delected.tcontrols.DisplaySpeedTask;
 import me.delected.tcontrols.DriverFile;
 import me.delected.tcontrols.ServerOptions;
+import me.delected.tcontrols.TControls;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
@@ -14,6 +16,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.scheduler.BukkitScheduler;
+import org.bukkit.scheduler.BukkitTask;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -46,6 +50,7 @@ public class TControlsCommand implements CommandExecutor {
 
                 p.getInventory().clear();
                 p.getInventory().setContents(DriverFile.getSavedPlayerInventory(DriverFile.readFile(f, StandardCharsets.US_ASCII)));
+                DriverFile.taskList.remove(p);
                 p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(""));
                 if (f.delete()) {
                     p.sendMessage(ChatColor.GREEN + "Removed you from the driver mode! Here are your items back!");
@@ -141,6 +146,10 @@ public class TControlsCommand implements CommandExecutor {
     }
 
     private void displayActionBar(Player p) {
-        p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText("Speed: N/A"));
+
+        if (DriverFile.taskList.isEmpty()) {
+            BukkitTask task = new DisplaySpeedTask().runTaskTimer(TControls.plugin, 0L, 10L);
+        }
+        DriverFile.taskList.add(p);
     }
 }

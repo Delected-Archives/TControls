@@ -1,14 +1,12 @@
 package me.delected.tcontrols;
-
+import me.delected.tcontrols.commands.TCDebug;
 import me.delected.tcontrols.commands.TCReload;
 import me.delected.tcontrols.commands.TControlsCommand;
 import me.delected.tcontrols.events.ControlInteractEvents;
-import me.delected.tcontrols.events.ControlUseEvents;
 import me.delected.tcontrols.events.EnterVehicleEvent;
-import me.delected.tcontrols.events.LeaveEvent;
+import me.delected.tcontrols.events.PickDropItemEvent;
+import me.delected.tcontrols.events.PlayerJoinQuitEvents;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.util.logging.Level;
 
 public final class TControls extends JavaPlugin {
     public static JavaPlugin plugin;
@@ -18,10 +16,12 @@ public final class TControls extends JavaPlugin {
         plugin = this;
         getCommand("tcontrols").setExecutor(new TControlsCommand());
         getCommand("tcontrolsreload").setExecutor(new TCReload());
+        getCommand("tcontrolsdebug").setExecutor(new TCDebug());
+
         getServer().getPluginManager().registerEvents(new ControlInteractEvents(), this);
         getServer().getPluginManager().registerEvents(new EnterVehicleEvent(), this);
-        getServer().getPluginManager().registerEvents(new LeaveEvent(), this);
-        getServer().getPluginManager().registerEvents(new ControlUseEvents(), this);
+        getServer().getPluginManager().registerEvents(new PlayerJoinQuitEvents(), this);
+        getServer().getPluginManager().registerEvents(new PickDropItemEvent(), this);
 
         saveDefaultConfig();
 
