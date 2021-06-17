@@ -2,10 +2,7 @@
 
 [![Build Status](https://travis-ci.com/Delected/TControls.svg?branch=master)](https://travis-ci.com/Delected/TControls)
 
-
-Contibutions are greatly appreciated!
-
-Please fork the project and create a pull request.
+Why is it archived? This project is really old, and it is not a good display of my code style (the code is really ugly.) I also have no plans of continuing this project.
 
 ## List of contributors:
 
